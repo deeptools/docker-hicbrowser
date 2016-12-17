@@ -45,21 +45,18 @@ RUN conda install hicexplorer uwsgi flask==0.10.1 -c bioconda -c conda-forge && 
 
 # Custom Supervisord config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-# Remove default configuration from Nginx
-RUN rm /etc/nginx/conf.d/default.conf
-
 COPY monitor_traffic.sh /monitor_traffic.sh
 
 # Copy the modified Nginx conf
 COPY nginx.conf /etc/nginx/conf.d/
 
-
 # Copy the base uWSGI ini file to enable default dynamic uwsgi process number
 COPY uwsgi.ini /etc/uwsgi/
 COPY startup.sh /usr/bin/startup
-RUN chmod +x /usr/bin/startup
-#COPY ./app /app
+
+# Remove default configuration from Nginx
+RUN rm /etc/nginx/conf.d/default.conf && \
+    chmod +x /monitor_traffic.sh /usr/bin/startup
 
 EXPOSE 80
 
