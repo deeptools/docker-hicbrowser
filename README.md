@@ -21,4 +21,10 @@ docker run --rm -i -t -p 80:80 -v /home/rosi/data/:/data/ bgruening/hicbrowser
 
 Open a webbrowser and your own data can be visualised on `http://localhost`.
 
+If you want to start the HiCExplorer under a proxy prefix you can pass the environment variable `PROXY_PREFIX` into the container and your website will be available on `http://localhost/hicexplorer/`.
+
+```
+docker run -p 80:80 -e PREXY_PREFIX=/hicexplorer -v /home/rosi/data/:/data/ bgruening/hicbrowser
+```
+
 This image can also be used as a [Galaxy](https://github.com/galaxyproject/galaxy) Interactive Environment in conjunction with [HiCExplorer](https://github.com/maxplanck-ie/HiCExplorer).
