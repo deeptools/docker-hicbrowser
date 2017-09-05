@@ -14,5 +14,5 @@ before_install:
 
 script:
   - curl -v --fail http://localhost
-  - curl -v --fail http://localhost:81/hicbrowser
+  - curl -v --fail http://localhost:81/hicbrowser/
   - curl -v --fail http://localhost/fail
