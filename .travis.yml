@@ -8,8 +8,11 @@ services:
 before_install:
   - docker build -t hicbrowser .
   - docker run -d -p 80:80 hicbrowser
+  - docker run -d -e PROXY_PREFIX=hicbrowser -p 80:80 hicbrowser_proxy
   - docker ps -a
   - sleep 20
 
 script:
   - curl -v --fail http://localhost
+  - curl -v --fail http://localhost/hicbrowser
+  - curl -v --fail http://localhost/fail
