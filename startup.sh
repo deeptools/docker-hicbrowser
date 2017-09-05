@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sed -i "s|PROXY_PREFIX|${PROXY_PREFIX}|" /etc/nginx/conf.d/nginx.conf;
+
 if [ -e /data/data_pack.tar.gz ]
 then
     cd /data
