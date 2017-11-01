@@ -8,13 +8,13 @@ ARG HICBROWSER_RELEASE
 ARG HICBROWSER_REPO
 
 ENV HICBROWSER_RELEASE=${HICBROWSER_RELEASE:-uwsgi} \
-HICBROWSER_REPO=${HICBROWSER_REPO:-https://github.com/maxplanck-ie/HiCBrowser} \
-HICBROWSER_ROOT=/home/hicbrowser \
-HICBROWSER_CONDA_PREFIX=/home/hicbrowser/conda \
-HICBROWSER_USER=hicbrowser \
-HICBROWSER_UID=1450 \
-HICBROWSER_GID=1450 \
-HICBROWSER_HOME=/home/hicbrowser
+    HICBROWSER_REPO=${HICBROWSER_REPO:-https://github.com/maxplanck-ie/HiCBrowser} \
+    HICBROWSER_ROOT=/home/hicbrowser \
+    HICBROWSER_CONDA_PREFIX=/home/hicbrowser/conda \
+    HICBROWSER_USER=hicbrowser \
+    HICBROWSER_UID=1450 \
+    HICBROWSER_GID=1450 \
+    HICBROWSER_HOME=/home/hicbrowser
 
 RUN apt-get update && apt-get install -y \
   wget \
@@ -36,8 +36,8 @@ RUN echo 'export PATH=$HICBROWSER_CONDA_PREFIX/bin:$PATH' > /etc/profile.d/conda
     /bin/bash ~/miniconda.sh -b -p $HICBROWSER_CONDA_PREFIX && \
     rm ~/miniconda.sh
 
-RUN conda install hicexplorer uwsgi bx-python flask==0.10.1 -c bioconda -c conda-forge && \
-    pip install $HICBROWSER_REPO/archive/$HICBROWSER_RELEASE.tar.gz && \
+RUN conda install hicexplorer uwsgi bx-python python-lzo flask==0.10.1 -c bioconda -c conda-forge
+RUN pip install pip==8.1.2 && pip install $HICBROWSER_REPO/archive/$HICBROWSER_RELEASE.tar.gz && \
     mkdir master && wget https://github.com/maxplanck-ie/HiCBrowser/archive/master.tar.gz && \
     tar zxvf master.tar.gz HiCBrowser-master/example_browser && \
     mv HiCBrowser-master/example_browser /data/ && \
