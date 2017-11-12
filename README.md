@@ -4,7 +4,7 @@ Docker container for easy deployment of the [HiCBrowser](https://github.com/maxp
 
 ## Usage
 
-You can download and run the container with the following command. Navigating to `http://localhost` will display
+You can [download](https://cloud.docker.com/app/bgruening/repository/docker/bgruening/hicbrowser) and run the container with the following command. Navigating to `http://localhost` will display
 HiCBrowser with a test dataset that we have assembled for you.
 
 ```
