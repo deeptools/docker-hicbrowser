@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
   wget \
   supervisor \
   bzip2 \
+  unzip \
   nano \
   net-tools && \
   apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
