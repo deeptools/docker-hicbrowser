@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
   wget \
   supervisor \
   bzip2 \
+  unzip \
   nano \
   net-tools && \
   apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -36,7 +37,7 @@ RUN echo 'export PATH=$HICBROWSER_CONDA_PREFIX/bin:$PATH' > /etc/profile.d/conda
     /bin/bash ~/miniconda.sh -b -p $HICBROWSER_CONDA_PREFIX && \
     rm ~/miniconda.sh
 
-RUN conda install hicexplorer uwsgi bx-python python-lzo flask==0.10.1 -c bioconda -c conda-forge
+RUN conda install hicexplorer uwsgi bx-python python-lzo pysam flask==0.10.1 python=2.7 -c conda-forge -c bioconda -c anaconda
 RUN pip install pip==8.1.2 && pip install $HICBROWSER_REPO/archive/$HICBROWSER_RELEASE.tar.gz && \
     mkdir master && wget https://github.com/maxplanck-ie/HiCBrowser/archive/master.tar.gz && \
     tar zxvf master.tar.gz HiCBrowser-master/example_browser && \
